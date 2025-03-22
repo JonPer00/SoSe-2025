@@ -31,11 +31,8 @@ def build_experiment(experiment_name, date, supervisor, subject) -> dict:
 
 def main():
     subject = build_person("Jonathan", "Pe.", "male", 20)
-    
     supervisor = build_person("Dr.", "Julia", "female", 30)
-    
     experiment = build_experiment("Leistungsfähigkeit", "2025-03-22", supervisor, subject)
-    
     print(experiment)
 
 if __name__ == "__main__":
