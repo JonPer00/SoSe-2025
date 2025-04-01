@@ -1,0 +1,88 @@
+# Python
+class Pferd:
+    def __init__(self, groesse, geschwindigkeit, hoechstgeschwindigkeit, name, alter):
+        self.groesse = groesse
+        self.geschwindigkeit = geschwindigkeit
+        self.hoechstgeschwindigkeit = hoechstgeschwindigkeit
+        self.name = name
+        self.alter = int(alter)
+        
+    def laufen(self):
+        print("Das Pferd läuft mit einer Geschwindigkeit von", self.geschwindigkeit, "km/h")
+        print("Das Pferd hat eine Höchstgeschwindigkeit von", self.hoechstgeschwindigkeit, "km/h")
+        print("Das Pferd ist", self.groesse, "cm groß")
+        print("Das Pferd hat den Namen ", self.name)
+    
+    def sich_vorstellen(self):
+        print("Hallo, ich bin", self.name)
+        print("Ich bin", self.groesse, "cm groß")
+        print("Meine Höchstgeschwindigkeit beträgt", self.hoechstgeschwindigkeit, "km/h")
+        print("Meine Geschwindigkeit beträgt", self.geschwindigkeit, "km/h")
+
+    def rechnen(self):
+        print("Vor ", self.alter // 2, "Jahren war ich halb so alt wie ich jetzt bin")
+    
+# Objekte
+Pferd1 = Pferd(150, 30, 60, "Lisa", 100)
+Pferd2 = Pferd(160, 40, 70, "Max", 50)
+
+#def. Methode aufrufen
+print("Pferd1:")
+Pferd1.sich_vorstellen()
+Pferd1.rechnen()
+
+print()
+print()
+
+print("Pferd2:")
+Pferd2.sich_vorstellen()
+Pferd2.rechnen()    
+
+print()
+print()
+
+
+
+class Sensor():
+        #Konstruktoren
+        def __init__(self, id):
+            self.id = str(id)
+            self.messwert = None
+            self.messwerte = []
+            self.passwort = "1234"
+            self.superpasswort = "bier"
+               
+                    
+        def mese(self, messwert):
+             self.messwert = messwert
+             self.messwerte.append(messwert)
+        
+        def calc_mean(self):
+             self.mittelwert = sum(self.messwerte)/len(self.messwerte)
+             return self.mittelwert
+        
+        def reset(self, passwort):
+            if passwort == self.passwort:
+                print("Passwort korrekt")
+                return True
+            else:
+                print("Passwort falsch")
+                return False
+            
+        def get_passwort(self, superpasswort):
+            if superpasswort == "bier":
+                return self.passwort
+            else:
+                return "Zugriff verweigert"
+
+if __name__ == "__main__":
+     s1 = Sensor(123)
+     print(s1.id)
+     s1.mese(10)
+     s1.mese(20)
+     s1.mese(30)
+     print(s1.calc_mean())
+     des_Passwort = s1.passwort
+     s1.reset(des_Passwort)
+
+
