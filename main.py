@@ -40,4 +40,4 @@ if __name__ == "__main__":
 
 # numpy installiert
 
-###Hallloooooo
+###Pandas Installiert!!!
