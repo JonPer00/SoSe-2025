@@ -1,0 +1,19 @@
+[project]
+name = "Projekt_Aufgabe5_SoSe25"
+version = "1"
+description = "Aufgabe 5"
+authors = [
+    {name = "nbramci", email = "nw.brandstetter@mci4me.at"},
+]
+dependencies = []
+requires-python = ">=3.13"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+distribution = true
