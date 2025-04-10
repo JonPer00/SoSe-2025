@@ -1,27 +1,42 @@
-class Subject():
-    def __init__(self, first_name, last_name, sex, age):
+from datetime import date
+
+class Person():
+    def __init__(self, first_name, last_name, birthdate):
         self.first_name = first_name
         self.last_name = last_name
+        self.__birthdate = birthdate
+
+    def get_age(self):
+        """Berechnet das Alter basierend auf dem Geburtsdatum"""
+        today = date.today()
+        birth = date.fromisoformat(self.__birthdate)
+        return today.year - birth.year - ((today.month, today.day) < (birth.month, birth.day))
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+
+
+class Subject(Person):
+    def __init__(self, first_name, last_name, birthdate, sex):
+        super().__init__(first_name, last_name, birthdate)
         self.sex = sex
-        self.age = age
-        self.max_hr = None
+        self.max_hr = None  # maximale Herzfrequenz
 
     def estimate_max_hr(self):
-        """Schätzt die maximale Herzfrequenz mit der Formel: 220 - Alter"""
-        self.max_hr = 220 - self.age
+        """Schätzt die maximale Herzfrequenz (220 - Alter)"""
+        self.max_hr = 220 - self.get_age()
         return self.max_hr
 
     def __str__(self):
-        return f"Subject: {self.first_name} {self.last_name}, Geschlecht: {self.sex}, Alter: {self.age}, Max HF: {self.max_hr}"
+        return f"Subject: {super().__str__()}, Geschlecht: {self.sex}, Max HF: {self.max_hr}"
 
 
-class Supervisor():
-    def __init__(self, first_name, last_name):
-        self.first_name = first_name
-        self.last_name = last_name
+class Supervisor(Person):
+    def __init__(self, first_name, last_name, birthdate):
+        super().__init__(first_name, last_name, birthdate)
 
     def __str__(self):
-        return f"Supervisor: {self.first_name} {self.last_name}"
+        return f"Supervisor: {super().__str__()}"
 
 
 class Experiment():
